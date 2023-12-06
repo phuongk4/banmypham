@@ -39,14 +39,14 @@ padding-top: 0px;
   	<label><input type="radio" name="optradio" checked>Thanh toán khi giao hàng (COD)</label>
 	</div>
 	 <div class="radio">
-  	<label><input type="radio" name="optradio">Chuyển khoản qua ngân hàng</label>
+  	<!-- <label><input type="radio" name="optradio">Chuyển khoản qua ngân hàng</label>
 	</div>
 	 <div class="radio">
   	<label><input type="radio" name="optradio">Thanh toán bằng thẻ ATM</label>
 	</div>
 	<div style="margin-bottom: 22px;" class="radio">
   	<label><input type="radio" name="optradio">Thanh toán bằng thẻ Visa</label>
-	</div>
+	</div> -->
     <button class="btn btn-lg btn-primary btn-block form-control2 " type="submit">Mua hàng</button> 
     	</div>
 

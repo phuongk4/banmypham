@@ -94,19 +94,22 @@
           <a class="nav-link" href="admin.php?controller=home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin.php?controller=category_product">Danh mục sản phẩm</a>
+            <a class="nav-link" href="admin.php?controller=loaisp">Danh mục sản phẩm</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin.php?controller=product">Sản phẩm</a>
+            <a class="nav-link" href="admin.php?controller=sanpham">Sản phẩm</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin.php?controller=order">Đơn hàng</a>
+            <a class="nav-link" href="admin.php?controller=muahang">Đơn hàng</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="admin.php?controller=slide">Slide</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="admin.php?controller=user">Danh sách người dùng</a>
+            <a class="nav-link" href="admin.php?controller=binhluan">Quản lý bình luận</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="admin.php?controller=admin">Danh sách người dùng</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="admin.php?controller=logout">Logout</a>

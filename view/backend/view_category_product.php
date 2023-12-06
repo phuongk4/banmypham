@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<!-- card -->
 		<div style="margin:15px 0px">
-			<a href="admin.php?controller=add_edit_category_product&act=add" class="btn btn-primary">Add</a>
+			<a href="admin.php?controller=them_sua_loaisp&act=add" class="btn btn-primary">Add</a>
 		</div>
 		<div class="card border-primary">
 			<div class="card card-header bg-primary text-white" style="padding:7px !important;">Danh mục sản phẩm</div>
@@ -20,8 +20,8 @@
 					<tr>
 						<td><?php echo $rows->c_name; ?></td>
 						<td style="text-align: center;">
-							<a href="admin.php?controller=add_edit_category_product&act=edit&id=<?php echo $rows->pk_category_product_id; ?>">Edit</a>&nbsp;&nbsp;
-							<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=category_product&act=delete&id=<?php echo $rows->pk_category_product_id; ?>">Delete</a>
+							<a href="admin.php?controller=them_sua_loaisp&act=edit&id=<?php echo $rows->id_loaisp; ?>">Edit</a>&nbsp;&nbsp;
+							<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=them_sua_loaisp&act=delete&id=<?php echo $rows->id_loaisp; ?>">Delete</a>
 						</td>
 					</tr>
 				<?php } ?>
@@ -35,7 +35,7 @@
 						for($i = 1; $i <= $num_page; $i++)
 						{
 					 ?>	
-						<li class="page-item"><a class="page-link" href="admin.php?controller=category_product&p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+						<li class="page-item"><a class="page-link" href="admin.php?controller=loaisp&p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 					<?php } ?>
 					</ul>
 				</div>

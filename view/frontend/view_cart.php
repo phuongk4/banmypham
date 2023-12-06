@@ -15,10 +15,10 @@
 			<td><img style="width: 100px;" src="public/upload/product/<?php echo $product["c_img"]; ?>"></td>
 			<td style="text-align: center;"><?php echo $product["c_name"]; ?></td>
 			<td style="text-align: center;">
-			<input type="number" name="<?php echo $product['pk_product_id']; ?>" style="width: 30px;text-align: center;" min = "0" value="<?php echo number_format($product['number']); ?>">
+			<input type="number" name="<?php echo $product['id_sp']; ?>" style="width: 30px;text-align: center;" min = "0" value="<?php echo number_format($product['number']); ?>">
 			</td>
 			<td style="text-align: center;"><?php echo number_format($product["c_price"]); ?>VNĐ</td>
-			<td style="text-align: center;"><a href="index.php?controller=cart&act=delete&id=<?php echo $product['pk_product_id']; ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
+			<td style="text-align: center;"><a href="index.php?controller=cart&act=delete&id=<?php echo $product['id_sp']; ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 		</tr>
 	<?php endforeach; ?>
 	</table>

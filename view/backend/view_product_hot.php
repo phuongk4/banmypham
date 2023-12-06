@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<!-- card -->
 		<div style="margin:15px 0px">
-			<a href="admin.php?controller=add_edit_product_hot&act=add" class="btn btn-primary">Add</a>
+			<a href="admin.php?controller=them_sua_sanpham_hot&act=add" class="btn btn-primary">Add</a>
 		</div>
 		<div class="card border-primary">
 			<div class="card card-header bg-primary text-white" style="padding:7px !important;">Login</div>
@@ -30,7 +30,7 @@
 						<td>
 <?php 
 	//lay mot ban ghi, goi ham get_a_record() trong model
-	$category = $this->model->get_a_record("select c_name from tbl_category_product where pk_category_product_id=".$rows->fk_category_product_id);
+	$category = $this->model->get_a_record("select c_name from tbl_loaisp where id_loaisp=".$rows->fk_category_product_id);
 	echo isset($category->c_name)?$category->c_name:"";
  ?>
 						</td>
@@ -40,8 +40,8 @@
 						<?php } ?>
 						</td>
 						<td style="text-align: center;">
-<a href="admin.php?controller=add_edit_product_hot&act=edit&id=<?php echo $rows->pk_product_id; ?>">Edit</a>&nbsp;&nbsp;
-<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=product_hot&act=delete&id=<?php echo $rows->pk_product_id; ?>">Delete</a>
+<a href="admin.php?controller=them_sua_sanpham_hot&act=edit&id=<?php echo $rows->id_sp; ?>">Edit</a>&nbsp;&nbsp;
+<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=product_hot&act=delete&id=<?php echo $rows->id_sp; ?>">Delete</a>
 						</td>
 					</tr>
 				<?php } ?>

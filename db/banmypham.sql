@@ -68,19 +68,19 @@ INSERT INTO `tbl_category_news` (`pk_category_news_id`, `c_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_category_product`
+-- Table structure for table `tbl_loaisp`
 --
 
-CREATE TABLE `tbl_category_product` (
-  `pk_category_product_id` int(11) NOT NULL,
+CREATE TABLE `tbl_loaisp` (
+  `id_loaisp` int(11) NOT NULL,
   `c_name` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_category_product`
+-- Dumping data for table `tbl_loaisp`
 --
 
-INSERT INTO `tbl_category_product` (`pk_category_product_id`, `c_name`) VALUES
+INSERT INTO `tbl_loaisp` (`id_loaisp`, `c_name`) VALUES
 (1, 'Thương hiệu'),
 (2, 'Trang điểm'),
 (3, 'Dưỡng da'),
@@ -91,10 +91,10 @@ INSERT INTO `tbl_category_product` (`pk_category_product_id`, `c_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_customer`
+-- Table structure for table `tbl_taikhoan`
 --
 
-CREATE TABLE `tbl_customer` (
+CREATE TABLE `tbl_taikhoan` (
   `customer_id` int(11) NOT NULL,
   `hovaten` varchar(500) NOT NULL,
   `diachi` varchar(2000) NOT NULL,
@@ -105,10 +105,10 @@ CREATE TABLE `tbl_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_customer`
+-- Dumping data for table `tbl_taikhoan`
 --
 
-INSERT INTO `tbl_customer` (`customer_id`, `hovaten`, `diachi`, `dienthoai`, `ghichu`, `email`, `password`) VALUES
+INSERT INTO `tbl_taikhoan` (`customer_id`, `hovaten`, `diachi`, `dienthoai`, `ghichu`, `email`, `password`) VALUES
 (22, 'Nguyễn Văn A', '', '', '', 'nva@mail.com', '202cb962ac59075b964b07152d234b70'),
 (23, 'test', 'test1', '123', '', 'admin@mail.com', '202cb962ac59075b964b07152d234b70'),
 (24, 'Admin', 'Hà nội', '123456', '', 'admin@mail.com', '202cb962ac59075b964b07152d234b70'),
@@ -168,10 +168,10 @@ INSERT INTO `tbl_news` (`pk_news_id`, `fk_category_news_id`, `c_name`, `c_descri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_order`
+-- Table structure for table `tbl_muahang`
 --
 
-CREATE TABLE `tbl_order` (
+CREATE TABLE `tbl_muahang` (
   `order_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `ngaymua` date NOT NULL,
@@ -180,10 +180,10 @@ CREATE TABLE `tbl_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_order`
+-- Dumping data for table `tbl_muahang`
 --
 
-INSERT INTO `tbl_order` (`order_id`, `customer_id`, `ngaymua`, `gia`, `trangthai`) VALUES
+INSERT INTO `tbl_muahang` (`order_id`, `customer_id`, `ngaymua`, `gia`, `trangthai`) VALUES
 (60, 23, '2017-09-17', 3000000, 1),
 (61, 22, '2018-08-17', 13000000, 1),
 (62, 25, '2018-11-28', 0, 1),
@@ -199,21 +199,21 @@ INSERT INTO `tbl_order` (`order_id`, `customer_id`, `ngaymua`, `gia`, `trangthai
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_order_detail`
+-- Table structure for table `tbl_giaohang`
 --
 
-CREATE TABLE `tbl_order_detail` (
-  `order_detail_id` int(11) NOT NULL,
+CREATE TABLE `tbl_giaohang` (
+  `giaohang_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `fk_product_id` int(11) NOT NULL,
   `c_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_order_detail`
+-- Dumping data for table `tbl_giaohang`
 --
 
-INSERT INTO `tbl_order_detail` (`order_detail_id`, `order_id`, `fk_product_id`, `c_number`) VALUES
+INSERT INTO `tbl_giaohang` (`giaohang_id`, `order_id`, `fk_product_id`, `c_number`) VALUES
 (95, 60, 11, 1),
 (96, 0, 14, 1),
 (97, 0, 13, 1),
@@ -236,11 +236,11 @@ INSERT INTO `tbl_order_detail` (`order_detail_id`, `order_id`, `fk_product_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product`
+-- Table structure for table `tbl_sanpham`
 --
 
-CREATE TABLE `tbl_product` (
-  `pk_product_id` int(11) NOT NULL,
+CREATE TABLE `tbl_sanpham` (
+  `id_sp` int(11) NOT NULL,
   `fk_category_product_id` int(11) NOT NULL DEFAULT '0',
   `c_name` varchar(500) NOT NULL,
   `c_description` varchar(20000) NOT NULL,
@@ -251,10 +251,10 @@ CREATE TABLE `tbl_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_product`
+-- Dumping data for table `tbl_sanpham`
 --
 
-INSERT INTO `tbl_product` (`pk_product_id`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
+INSERT INTO `tbl_sanpham` (`id_sp`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
 (2, 2, 'KEM NỀN CATRICE HD LIQUID', '<h1><strong>KEM N&Ecirc;̀N CATRICE HD LIQUID COVERAGE FOUNDATION 24H</strong></h1>\r\n', '<p><em>Xuất xứ: Italy</em></p>\r\n\r\n<p><em>H&atilde;ng: Catrice</em></p>\r\n\r\n<p><em>Dung lượng: 30ml</em></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/24067779_1952330381673314_598695944029987450_n.jpg\" /></p>\r\n\r\n<p><em>Kem nền HD,&nbsp;</em>si&ecirc;u phẩm mới tr&igrave;nh l&agrave;ng 2016 của&nbsp;<strong>Catrice</strong>&nbsp;tuy là dòng drugstore nhưng ch&acirc;́t lượng kh&ocirc;ng h&ecirc;̀ thua kém các dòng sản ph&acirc;̉m highend th&acirc;̣m chí còn tuy&ecirc;̣t vời hơn nữa khi&ecirc;́n nhi&ecirc;̀u blogger khen ngợi h&ecirc;́t lời (y)</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_01.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_02.jpg\" /></p>\r\n\r\n<p>Với các nàng y&ecirc;u th&iacute;ch makeup tự nhi&ecirc;n lại kh&ocirc;ng sợ bị tr&ocirc;i ph&acirc;́n trong thời gian dài th&igrave;&nbsp;<em>Kem n&ecirc;̀n&nbsp;CATRICE Foundation</em>&nbsp;r&acirc;́t đáng đ&ecirc;̉ thử. Tạo một lớp nền mỏng, đều m&agrave;u, trong suốt. Th&iacute;ch hợp với da dầu v&agrave; da hỗn hợp</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4349.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4369.jpg\" /></p>\r\n\r\n<p><em>Kem Nền CATRICE HD Liquid Coverage Foundation</em>&nbsp;được thiết kế với 1 ống ampoule nhỏ giọt gi&uacute;p việc lấy v&agrave; điều tiết kem dễ d&agrave;ng. Đ&acirc;y cũng là đi&ecirc;̉m nh&acirc;́n đặc bi&ecirc;̣t của sản ph&acirc;̉m và nhờ v&acirc;̣y mà kem n&ecirc;̀n được bảo quản t&ocirc;́t hơn.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_03.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-4.jpg\" /></p>\r\n\r\n<p><u><em>G&ocirc;̀m 4 t&ocirc;ng:</em></u></p>\r\n\r\n<p><em>#010 - da trắng</em></p>\r\n\r\n<p><em>#020 - trắng hồng</em></p>\r\n\r\n<p><em>#030 - da tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>#040 - da ngăm</em></p>\r\n\r\n<p>Lớp&nbsp;<em>Kem Nền CATRICE HD Liquid Coverage</em>&nbsp;v&ocirc; c&ugrave;ng&nbsp;mỏng mịn,&nbsp;hiệu quả&nbsp;che phủ cao giữ l&acirc;u đến hơn 12h, chỉ c&acirc;̀n 1 lớp phủ mỏng nhẹ cũng đủ che phủ cho da đẹp tự nhi&ecirc;n căng tràn, kh&ocirc;ng dính, kh&ocirc;ng g&acirc;y bí bách l&ocirc;̃ ch&acirc;n l&ocirc;ng.</p>\r\n\r\n<p>Có lẽ vì v&acirc;̣y mà&nbsp;<strong>CATRICE Foundation</strong>&nbsp;còn được m&ecirc;̣nh danh là &ldquo;Second skin&rdquo; nhờ đ&ocirc;̣ cover HD tạo n&ecirc;n 1 lớp da thứ 2 tuy&ecirc;̣t vời kh&ocirc;ng góc ch&ecirc;́t cho phái đẹp.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-3.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/catrice-hd-liquid-coverage-foundation-3.jpg\" /></p>\r\n\r\n<p>Thời gian che phủ&nbsp;l&ecirc;n đến hơn 12h&nbsp;n&ecirc;n bạn c&oacute; thể thoải m&aacute;i&nbsp;hoạt động cả ng&agrave;y d&agrave;i&nbsp;m&agrave; kh&ocirc;ng cần dặm lại kem hay lo kem tr&ocirc;i do mồ h&ocirc;i hay gặp mưa&hellip;</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-kiem-dau-catrice-hd-liquid-coverage-foundation%20(12).jpg\" /></p>\r\n\r\n<p><strong><u><em>HDSD:&nbsp;</em></u></strong></p>\r\n\r\n<p><em>- T&aacute;n kem bằng tay hoặc dùng mút/cọ tán n&ecirc;̀n để c&oacute; lớp n&ecirc;̀n tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>- Th&iacute;ch hợp cho make up c&aacute; nh&acirc;n hoặc make up chuy&ecirc;n nghiệp</em></p>\r\n', '154376015924067779_1952330381673314_598695944029987450_n.jpg', 1, 6000000),
 (3, 3, 'Toner Caryophy', '<h1><strong>TONER CARYOPHY</strong></h1>\r\n', '<h2><strong>NƯỚC HOA HỒNG - TONER L&Agrave; G&Igrave;, C&Oacute; T&Aacute;C DỤNG RA SAO?</strong></h2>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;hay c&ograve;n được gọi l&agrave;&nbsp;<strong>nước hoa hồng Caryophy</strong>&nbsp;l&agrave; dung dịch c&oacute; chiết xuất ho&agrave;n to&agrave;n từ thi&ecirc;n nhi&ecirc;n c&oacute; t&aacute;c dụng c&acirc;n bằng độ pH cho da, nước hoa hồng khử bỏ dầu thừa v&agrave; loại hẳn bụi bẩn, l&agrave;m se lỗ ch&acirc;n l&ocirc;ng v&agrave; l&agrave;m dịu da.</p>\r\n\r\n<p>C&oacute; thể n&oacute;i l&agrave;&nbsp;<strong>toner Caryophy</strong>&nbsp;như một người bạn th&acirc;n thiết nhất đối với l&agrave;n da của c&aacute;c chị em phụ nữ. Trong<strong>toner Caryophy</strong>&nbsp;c&oacute; vitamin A v&agrave; C, c&aacute;c chất chống l&atilde;o h&oacute;a gi&uacute;p ngăn ngừa, giảm thiểu c&aacute;c nếp nhăn tr&ecirc;n da v&agrave; giảm quầng th&acirc;m ở mắt.</p>\r\n\r\n<p>Ngo&agrave;i ra trong&nbsp;<strong>toner Caryophy</strong>&nbsp;c&oacute; cồn l&agrave;m tăng t&iacute;nh s&aacute;t khuẩn khiến l&agrave;n da trở n&ecirc;n tươi tắng trẻ trung hơn.</p>\r\n\r\n<p><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/6c24653cd0c5309b69d4.jpg\" /></p>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;đem lại nhiều lợi &iacute;ch v&agrave; c&oacute; thể được sử dụng theo c&aacute;c c&aacute;ch kh&aacute;c nhau. N&oacute; được coi như l&agrave; &ldquo;ph&eacute;p m&agrave;u k&igrave; diệu của thi&ecirc;n nhi&ecirc;n&rdquo; v&igrave; ho&agrave;n to&agrave;n v&ocirc; hại với da d&ugrave; bạn c&oacute; sở hữu l&agrave;n da nhạy cảm dễ bị dị ứng nhất.</p>\r\n\r\n<p><strong>Toner Caryophy</strong>: l&agrave; loại toner thi&ecirc;n nhi&ecirc;n tốt nhất d&agrave;nh cho da mặt của bạn. H&atilde;y sử dụng một miếng b&ocirc;ng trang điểm, nhỏ v&agrave;i giọt l&ecirc;n đ&oacute; rồi thấm l&ecirc;n mọi v&ugrave;ng tr&ecirc;n da mặt h&agrave;ng ng&agrave;y. T&aacute;c dụng ch&iacute;nh của nước hoa hồng l&agrave; l&agrave;m se kh&iacute;t lỗ ch&acirc;n l&ocirc;ng, tạo hương thơm tự nhi&ecirc;n tr&ecirc;n da, gi&uacute;p bạn c&oacute; được một l&agrave;n da mịn m&agrave;ng, s&aacute;ng khỏe ho&agrave;n hảo.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;loại bỏ c&aacute;c dấu hiệu l&atilde;o ho&aacute;: cũng l&agrave;&nbsp;<strong>Nước hoa hồng Caryophy</strong>&nbsp;c&oacute; t&aacute;c dụng x&oacute;a vết ch&acirc;n chim quanh mắt v&agrave; nếp nhăn tr&ecirc;n da, gi&uacute;p cho da trở n&ecirc;n săn chắc. Ch&iacute;nh v&igrave; vậy, bạn c&oacute; thể coi n&oacute; l&agrave; &ldquo;thần dược&rdquo; tr&igrave; ho&atilde;n qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da. Phụ nữ ở lứa tuổi n&agrave;o cũng cần phải sử dụng sản phẩm l&agrave;m đẹp n&agrave;y.</p>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;l&agrave;m sạch da: Bạn c&oacute; thể l&agrave;m sạch dầu thừa tr&ecirc;n da, tẩy bỏ ho&agrave;n to&agrave;n lớp mỹ phẩm v&agrave; c&aacute;c tạp chất kh&aacute;c bằng c&aacute;ch sử dụng&nbsp;<strong>nước hoa hồng Caryophy</strong>. Đ&acirc;y được coi l&agrave; một chất tẩy rửa da nhẹ nhưng hiệu quả, kh&ocirc;ng g&acirc;y k&iacute;ch ứng da, đặc biệt l&agrave; với l&agrave;n da nhạy cảm. C&oacute; thể coi c&ocirc;ng dụng l&agrave;m sạch n&agrave;y l&agrave; một trong những lợi &iacute;ch tốt nhất của nước hoa hồng.</p>\r\n\r\n<p><strong>Toner Caryophy&nbsp;</strong>L&agrave;m dịu da trước &aacute;nh nắng mặt trời:&nbsp;<strong>Nước hoa hồng Caryophy</strong>&nbsp;l&agrave;m dịu l&agrave;n da ch&aacute;y nắng hoặc r&aacute;m nắng. Chỉ cần trộn một th&igrave;a c&agrave; ph&ecirc; bột l&aacute; h&uacute;ng quế trong 100ml nước hoa hồng rồi cho v&agrave;o b&igrave;nh xịt v&agrave; phun hỗn hợp n&agrave;y l&ecirc;n to&agrave;n bộ khu&ocirc;n mặt của bạn trước khi ra ngo&agrave;i.</p>\r\n\r\n<p><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/a1b49425baa05afe03b1.jpg\" /></p>\r\n\r\n<p>xem th&ecirc;m:&nbsp;<a href=\"https://caryophychinhhang.com/serum-tri-mun-va-tham-caryophy\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"serum caryophy\">Serum Trị Mụn V&agrave; L&agrave;m Mờ Vết Th&acirc;m Caryophy</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><strong>C&Oacute; N&Ecirc;N SỬ DỤNG NƯỚC HOA HỒNG CARYOPHY (TONER CARYOPHY) CHO DA MỤN?</strong></h2>\r\n\r\n<p>Để da mặt đỡ nhờn v&agrave; &iacute;t nổi mụn, bạn n&ecirc;n ch&uacute; &yacute; giữ cho da mặt sạch, rửa mặt đ&uacute;ng c&aacute;ch. Ngo&agrave;i m&ugrave;i hương thơm dễ chịu gi&uacute;p giảm căng thẳng, mệt mỏi,&nbsp;<strong>nước hoa hồng Caryophy</strong>&nbsp;c&ograve;n c&oacute; t&aacute;c dụng giữ ẩm cho da, thu nhỏ lỗ ch&acirc;n l&ocirc;ng v&agrave; hỗ trợ tẩy tế b&agrave;o chết.</p>\r\n\r\n<p><strong>1/ Da mụn cần rửa mặt thật sạch, hạn chế sử dụng nước hoa hồng.</strong></p>\r\n\r\n<p>Sử dụng&nbsp;<strong>nước hoa hồng Caryophy</strong>&nbsp;(<strong>toner Caryophy</strong>) kh&ocirc;ng thể thay thế cho việc rửa mặt bằng nước sạch để loại bỏ bụi bẩn, chất nhờn, mỹ phẩm&hellip;. Đặc biệt khi da qu&aacute; nhờn, bạn cần phải d&ugrave;ng th&ecirc;m sữa rửa mặt. Sau khi rửa mặt v&agrave; tẩy trang sạch sẽ, bạn c&oacute; thể d&ugrave;ng&nbsp;<strong>nước hoa hồng Caryophy</strong>.</p>\r\n\r\n<p><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/a6bb9622b8a758f901b6.jpg\" /></p>\r\n\r\n<p>Tuy nhi&ecirc;n, bạn kh&ocirc;ng n&ecirc;n qu&aacute; lạm dụng&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;khi đang mụn nhiều v&igrave; như thế c&agrave;ng l&agrave;m b&iacute;t lỗ ch&acirc;n l&ocirc;ng khiến nh&acirc;n mụn kh&ocirc;ng tho&aacute;t ra được. Kh&ocirc;ng n&ecirc;n thường xuy&ecirc;n sử dụng&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;c&oacute; cồn v&igrave; cồn dễ bay hơi sẽ l&agrave;m độ ẩm của da giảm, g&acirc;y hiện tượng kh&ocirc; da.</p>\r\n\r\n<p>Bạn n&ecirc;n chọn sản phẩm&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;trong th&agrave;nh phần kh&ocirc;ng chứa cồn hoặc tự chế nước hoa hồng để d&ugrave;ng.</p>\r\n\r\n<p><strong>2/ N&ecirc;n sử dụng nước hoa hồng trị mụn chuy&ecirc;n dụng</strong></p>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;(<strong>nước hoa hồng Caryophy</strong>) chứa salycylic acid tăng cường c&aacute;c chất điều trị mụn v&agrave;o s&acirc;u trong lỗ ch&acirc;n l&ocirc;ng, l&agrave;m giảm mụn chỉ sau v&agrave;i giờ v&agrave; glycolic acid đẩy mạnh qu&aacute; tr&igrave;nh l&agrave;m mới tế b&agrave;o da, chữa trị vết th&acirc;m do mụn để lại. C&ocirc;ng thức n&agrave;y được thử nghiệm v&agrave; chứng minh hiệu quả tối ưu của việc giảm mụn, vết đỏ trong v&ograve;ng 8 tiếng, tăng nhanh qu&aacute; tr&igrave;nh hồi phục của da, gi&uacute;p l&agrave;m mờ vết th&acirc;m sau khoảng một tuần.</p>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;được đ&aacute;nh gi&aacute; cao trong hiệu quả điều trị mụn trứng c&aacute; v&igrave; gi&uacute;p kiểm so&aacute;t sản xuất b&atilde; nhờn trong khi giết chết vi khuẩn g&acirc;y mụn. Sản phẩm nhận được nhiều phản hồi t&iacute;ch cực từ ph&iacute;a người d&ugrave;ng kh&ocirc;ng chỉ ở H&agrave;n Quốc m&agrave; c&ograve;n tr&ecirc;n to&agrave;n thế giới.</p>\r\n\r\n<p><strong>Toner Caryohy</strong>&nbsp;&ndash; thứ nước tuyệt đẹp d&agrave;nh cho mặt. Th&agrave;nh phần hoạt động ch&iacute;nh l&agrave; BHA. BHA được coi l&agrave; thần dược trị mụn, mọi loại mụn!</p>\r\n\r\n<p><strong>Toner Caryophy</strong>&nbsp;hoạt động s&acirc;u trong lỗ ch&acirc;n l&ocirc;ng. N&oacute; c&oacute; t&aacute;c dụng loại bỏ dầu thừa, tế b&agrave;o chết &ndash; nguy&ecirc;n nh&acirc;n g&acirc;y b&iacute;t tắc lỗ ch&acirc;n l&ocirc;ng, l&agrave;m lỗ ch&acirc;n l&ocirc;ng to, g&acirc;y mụn.</p>\r\n\r\n<p><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/b24b13d83d5ddd03844c.jpg\" /></p>\r\n\r\n<p>Với đặc t&iacute;nh chống khuẩn, chống sưng, BHA ti&ecirc;u diệt vi khuẩn g&acirc;y mụn, l&agrave;m dịu vết sưng tấy do mụn, se nh&acirc;n mụn.</p>\r\n\r\n<p>Gi&uacute;p da sạch mụn, mịn m&agrave;ng, ngăn ngừa mụn quay trở lại.</p>\r\n\r\n<p>Lotion dạng nước, thấm cực nhanh, kh&ocirc;ng d&iacute;nh, kh&ocirc;ng b&oacute;ng nhờn.</p>\r\n\r\n<p>Lotion trị mụn Bigansui c&ograve;n c&oacute; t&aacute;c dụng nhanh ch&oacute;ng l&agrave;m dịu l&agrave;n da bị ch&aacute;y nắng.</p>\r\n\r\n<p>C&oacute; thể sử dụng l&agrave;m dịu da bị đau r&aacute;t khi cạo r&acirc;u.</p>\r\n\r\n<p>Sản phẩm ph&ugrave; hợp với da dầu, da mụn, da nhạy cảm.</p>\r\n\r\n<p><strong>3/ Da bị mụn d&ugrave;ng nước hoa hồng kết hợp với chanh, hạnh nh&acirc;n</strong></p>\r\n\r\n<p>Để tăng hiệu quả ngăn ngừa mụn, bạn c&oacute; thể kết hợp nước hoa hồng c&ugrave;ng với một số nguy&ecirc;n liệu đến từ thi&ecirc;n nhi&ecirc;n quen thuộc như nước chanh, bột hạnh nh&acirc;n, tinh dầu c&acirc;y tr&agrave;.</p>\r\n\r\n<p><br />\r\nNước chanh c&oacute; nhiều vitamin C c&oacute; khả năng loại bỏ mụn đầu đen, chất nhờn, tế b&agrave;o chết, thu nhỏ lỗ ch&acirc;n l&ocirc;ng gi&uacute;p da s&aacute;ng mịn v&agrave; sạch mụn, trong khi đ&oacute;&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;cung cấp độ ẩm cho l&agrave;n da, giảm nếp nhăn cũng như l&agrave;m chậm qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a của l&agrave;n da.</p>\r\n\r\n<p>Hỗn hợp bột hạnh nh&acirc;n kết hợp&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;vừa nu&ocirc;i dưỡng da vừa loại bỏ mụn th&agrave;nh c&ocirc;ng. Hỗn hợp nước hoa hồng với tinh dầu c&acirc;y tr&agrave; cũng chống vi khuẩn v&agrave; chữa trị c&aacute;c vấn đề về da mụn.</p>\r\n\r\n<h3><strong>C&Aacute;CH SỬ DỤNG NƯỚC HOA HỒNG CARYOPHY&nbsp;Đ&Uacute;NG C&Aacute;CH</strong></h3>\r\n\r\n<p>C&aacute;ch tốt nhất l&agrave; b&ocirc;i&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;hai lần một ng&agrave;y v&agrave;o buổi s&aacute;ng v&agrave; tối ngay sau khi rửa mặt hoặc tẩy trang. Sử dụng một lượng nhỏ&nbsp;<strong>nước hoa hồng&nbsp;Caryophy</strong>&nbsp;rồi d&ugrave;ng b&ocirc;ng tẩy trang thấm nhẹ nh&agrave;ng l&ecirc;n khắp mặt v&agrave; v&ugrave;ng da cổ đặc biệt l&agrave; v&ugrave;ng chữ T :bao gồm tr&aacute;n, mũi v&agrave; cằm.</p>\r\n', '15437680046c24653cd0c5309b69d4.jpg', 1, 6000000),
 (4, 3, 'Nước hoa KAVIAN', '<p><strong>SỮA RỬA MẶT KAVIAN</strong></p>\r\n', '<p>&nbsp;</p>\r\n\r\n<p><strong><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/36835449_451224941955135_4396126063722233856_n.png\" /></strong></p>\r\n\r\n<p><strong><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/1537582161_product2.png\" /></strong></p>\r\n\r\n<p><strong><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/45796447_528430367567925_2971442513505681408_n.jpg\" /><img alt=\"\" src=\"http://myphamhanquoc.com/upload/images/45658214_528430384234590_8791603948160024576_n.jpg\" /></strong></p>\r\n', '154376812336835449_451224941955135_4396126063722233856_n.png', 1, 6000000),
@@ -267,18 +267,18 @@ INSERT INTO `tbl_product` (`pk_product_id`, `fk_category_product_id`, `c_name`, 
 (13, 1, 'The Rice Water', '<p><strong>Kem tẩy trang tinh chất gạo THE FACE SHOP Rice Water Bright Cleansing Cream</strong></p>\r\n', '<p>Mỗi lần hoạt động mạnh, hoặc thời tiết oi bức l&agrave;m da tiết da dầu nhờn hay sau bu&ocirc;̉i party, bạn cần rửa sạch ho&agrave;n to&agrave;n c&aacute;c lớp make-up tr&ecirc;n da. Ng&agrave;y nay, c&oacute; rất nhiều sản phẩm tẩy trang hiệu quả. Sản phẩm&nbsp;<strong>Kem tẩy trang tinh chất gạo Rice Water Bright Cleansing Cream&nbsp;</strong>l&agrave; một trong những sản phẩm tẩy trang hiệu quả nhất.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquocso1.com/data/news/1529/The-Face-Shop-Rice-Water-Br.jpg\" /></p>\r\n\r\n<p><strong>Kem tẩy trang tinh chất gạo Rice Water Bright Cleansing Cream&nbsp;</strong>với chiết suất từ nước gạo, dầu thực vật Moringa, Oliu - l&agrave; những th&agrave;nh phần tốt nhất gi&uacute;p l&agrave;m sạch c&aacute;c phần trang điểm c&ograve;n thừa v&agrave; ở những vị tr&iacute; kh&oacute; tẩy trang nhất như kh&oacute;e mắt, c&aacute;nh mũi.</p>\r\n\r\n<p>Ngo&agrave;i ra,<strong>&nbsp;</strong>sản phẩm c&ograve;n&nbsp;loại bỏ&nbsp;b&atilde; nhờn rất hiệu quả hiệu quả, cung cấp độ ẩm cho da, mang lại cho bạn l&agrave;n da mềm mịn v&agrave; dễ chịu.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"https://4.bp.blogspot.com/-0lzcIEJ-xOg/UfoskcIfj3I/AAAAAAAAApU/zFcFt-o1M5Y/s1600/P8014304.JPG\" /></p>\r\n\r\n<p><strong>Hướng dẫn sử dụng:</strong></p>\r\n\r\n<p>Thoa một lượng vừa đủ v&agrave; thấm một &iacute;t nước. Massage đều da mặt v&agrave; rửa sạch lại với nước &acirc;́m.</p>\r\n\r\n<p>-----------------------------</p>\r\n\r\n<p><strong>BEAUTYTIP: Bí quy&ecirc;́t t&acirc;̉y trang hi&ecirc;̣u quả!!</strong></p>\r\n\r\n<p><strong>Bí quy&ecirc;́t 1:&nbsp;Chọn sản phẩm tẩy trang ph&ugrave; hợp với loại da</strong></p>\r\n\r\n<p>&gt;&gt; Với da dầu v&agrave; hỗn hợp dầu: Chọn loại tẩy trang c&oacute; gốc dầu hoặc dạng bọt, đ&ecirc;̉ lấy đi lớp b&atilde; nhờn tr&ecirc;n da triệt để c&ugrave;ng với lớp trang điểm.</p>\r\n\r\n<p>&gt;&gt; Với da kh&ocirc; hoặc hỗn hợp kh&ocirc;: Chọn những sản phẩm tẩy trang dạng sữa, hoặc dạng kem. Ngo&agrave;i khả năng lấy đi lớp trang điểm, n&oacute; c&ograve;n cung cấp độ ẩm cần thiết mà kh&ocirc;ng l&agrave;m cho da kh&ocirc; căng, kh&oacute; chịu.<br />\r\n<br />\r\n<strong>Bí quy&ecirc;́t 2:&nbsp;T&acirc;̉y trang theo từng vùng da</strong></p>\r\n\r\n<p>&gt;&gt;&gt; V&ugrave;ng mắt v&agrave; m&ocirc;i: L&agrave; 2 v&ugrave;ng da mỏng v&agrave; dễ tổn thương nhất, cần một loại tẩy trang dịu nhẹ và chuy&ecirc;n bi&ecirc;̣t cho 2 v&ugrave;ng da n&agrave;y.</p>\r\n\r\n<p>&gt;&gt;&gt; T&acirc;̉y trang cho lớp make-up kh&ocirc;ng tr&ocirc;i: Tránh dùng sức hoặc chà xát mạnh vào da đ&ecirc;̉ kh&ocirc;ng làm t&ocirc;̉n thương b&ecirc;̀ mặt da của bạn.</p>\r\n', '154376787721618001_1924820281090991_381223081402366177_n.jpg', 1, 6000000),
 (14, 2, 'KEM NỀN CATRICE HD', '<p><strong>KEM N&Ecirc;̀N CATRICE HD LIQUID COVERAGE FOUNDATION 24H</strong></p>\r\n', '<p><em>Xuất xứ: Italy</em></p>\r\n\r\n<p><em>H&atilde;ng: Catrice</em></p>\r\n\r\n<p><em>Dung lượng: 30ml</em></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/24067779_1952330381673314_598695944029987450_n.jpg\" /></p>\r\n\r\n<p><em>Kem nền HD,&nbsp;</em>si&ecirc;u phẩm mới tr&igrave;nh l&agrave;ng 2016 của&nbsp;<strong>Catrice</strong>&nbsp;tuy là dòng drugstore nhưng ch&acirc;́t lượng kh&ocirc;ng h&ecirc;̀ thua kém các dòng sản ph&acirc;̉m highend th&acirc;̣m chí còn tuy&ecirc;̣t vời hơn nữa khi&ecirc;́n nhi&ecirc;̀u blogger khen ngợi h&ecirc;́t lời (y)</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_01.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_02.jpg\" /></p>\r\n\r\n<p>Với các nàng y&ecirc;u th&iacute;ch makeup tự nhi&ecirc;n lại kh&ocirc;ng sợ bị tr&ocirc;i ph&acirc;́n trong thời gian dài th&igrave;&nbsp;<em>Kem n&ecirc;̀n&nbsp;CATRICE Foundation</em>&nbsp;r&acirc;́t đáng đ&ecirc;̉ thử. Tạo một lớp nền mỏng, đều m&agrave;u, trong suốt. Th&iacute;ch hợp với da dầu v&agrave; da hỗn hợp</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4349.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4369.jpg\" /></p>\r\n\r\n<p><em>Kem Nền CATRICE HD Liquid Coverage Foundation</em>&nbsp;được thiết kế với 1 ống ampoule nhỏ giọt gi&uacute;p việc lấy v&agrave; điều tiết kem dễ d&agrave;ng. Đ&acirc;y cũng là đi&ecirc;̉m nh&acirc;́n đặc bi&ecirc;̣t của sản ph&acirc;̉m và nhờ v&acirc;̣y mà kem n&ecirc;̀n được bảo quản t&ocirc;́t hơn.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_03.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-4.jpg\" /></p>\r\n\r\n<p><u><em>G&ocirc;̀m 4 t&ocirc;ng:</em></u></p>\r\n\r\n<p><em>#010 - da trắng</em></p>\r\n\r\n<p><em>#020 - trắng hồng</em></p>\r\n\r\n<p><em>#030 - da tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>#040 - da ngăm</em></p>\r\n\r\n<p>Lớp&nbsp;<em>Kem Nền CATRICE HD Liquid Coverage</em>&nbsp;v&ocirc; c&ugrave;ng&nbsp;mỏng mịn,&nbsp;hiệu quả&nbsp;che phủ cao giữ l&acirc;u đến hơn 12h, chỉ c&acirc;̀n 1 lớp phủ mỏng nhẹ cũng đủ che phủ cho da đẹp tự nhi&ecirc;n căng tràn, kh&ocirc;ng dính, kh&ocirc;ng g&acirc;y bí bách l&ocirc;̃ ch&acirc;n l&ocirc;ng.</p>\r\n\r\n<p>Có lẽ vì v&acirc;̣y mà&nbsp;<strong>CATRICE Foundation</strong>&nbsp;còn được m&ecirc;̣nh danh là &ldquo;Second skin&rdquo; nhờ đ&ocirc;̣ cover HD tạo n&ecirc;n 1 lớp da thứ 2 tuy&ecirc;̣t vời kh&ocirc;ng góc ch&ecirc;́t cho phái đẹp.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-3.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/catrice-hd-liquid-coverage-foundation-3.jpg\" /></p>\r\n\r\n<p>Thời gian che phủ&nbsp;l&ecirc;n đến hơn 12h&nbsp;n&ecirc;n bạn c&oacute; thể thoải m&aacute;i&nbsp;hoạt động cả ng&agrave;y d&agrave;i&nbsp;m&agrave; kh&ocirc;ng cần dặm lại kem hay lo kem tr&ocirc;i do mồ h&ocirc;i hay gặp mưa&hellip;</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-kiem-dau-catrice-hd-liquid-coverage-foundation%20(12).jpg\" /></p>\r\n\r\n<p><strong><u><em>HDSD:&nbsp;</em></u></strong></p>\r\n\r\n<p><em>- T&aacute;n kem bằng tay hoặc dùng mút/cọ tán n&ecirc;̀n để c&oacute; lớp n&ecirc;̀n tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>- Th&iacute;ch hợp cho make up c&aacute; nh&acirc;n hoặc make up chuy&ecirc;n nghiệp</em></p>\r\n', '154376347524067779_1952330381673314_598695944029987450_n.jpg', 1, 6000000),
 (15, 1, 'Xịt thơm body Victorias', '<p>Xịt thơm body Victorias Secret FRAGNANCE Mist&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n', '<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"https://www.myphamhanquoc.com/upload/images/21077221_1935288446686122_7599263439285385841_n.jpg\" /></p>\r\n\r\n<p>Victoria&rsquo;s Secret l&agrave; thương hiệu nổi tiếng h&agrave;ng đầu của Mỹ kh&ocirc;ng chỉ trong lĩnh vực thời trang v&agrave; c&ograve;n cả trong ng&agrave;nh mỹ phẩm v&agrave; sản phẩm chăm s&oacute;c sắc đẹp. Mỗi sản phẩm l&agrave;m đẹp của Victoria&rsquo;s Secret l&agrave; một bản h&ograve;a tấu ngọt ng&agrave;o của hương thơm v&agrave; t&iacute;nh c&aacute;ch l&agrave;m xi&ecirc;u l&ograve;ng hầu hết phụ nữ tr&ecirc;n to&agrave;n thế giới...<br />\r\n<br />\r\nXịt thơm body Victoria&rsquo;s Secret hương thơm đa dạng..ngọt ng&agrave;o, sexy l&ocirc;i cuốn hay nhẹ nh&agrave;ng l&atilde;ng mạn..nhằm cho ph&aacute;i yếu c&oacute; nhiều hơn một sự lựa chọn.<br />\r\n<br />\r\nC&ocirc;ng dụng:<br />\r\n<br />\r\n- Mang đến cho cơ thể hương thơm quyến rũ, gợi cảm kh&oacute; cưỡng với sự pha trộn tuyệt vời giữa hương hoa lan, vani, quả m&acirc;n x&ocirc;i đen v&agrave; qu&yacute;t.<br />\r\n<br />\r\n- Khả năng giữ hương kh&aacute; tốt, khoảng 8- 10 tiếng.<br />\r\n<br />\r\n- C&ocirc;ng thức độc đ&aacute;o chứa tinh chất Aloe Vera v&agrave; hoa c&uacute;c La M&atilde; cung cấp dưỡng chất cho da, dưỡng ẩm cho da.</p>\r\n', '154376342721077221_1935288446686122_7599263439285385841_n.jpg', 1, 6000000);
-INSERT INTO `tbl_product` (`pk_product_id`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
+INSERT INTO `tbl_sanpham` (`id_sp`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
 (16, 3, 'SON KEM LÌ SECRET', '<p>SON KEM&nbsp;L&Igrave;&nbsp;SECRET KEY&nbsp;SWEET GLAM VELVET TINT</p>\r\n', '<p>Dung t&iacute;ch: 5g</p>\r\n\r\n<p>H&atilde;ng sx: Secret&nbsp;Key&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>-----------------------</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://www.myphamhanquoc.com/upload/images/28_10.jpg\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Đ&acirc;y ch&iacute;nh l&agrave; d&ograve;ng son mới toanh đang được c&aacute;c c&ocirc; n&agrave;ng m&ecirc; son săn đ&oacute;n, V&agrave; tiếp nối th&agrave;nh c&ocirc;ng của d&ograve;ng sweet glam tint glow đ&igrave;nh đ&aacute;m H&atilde;ng secret key lại cho ra em son kem l&igrave; Sweet Glam Velvet Tint cực kỳ hấp dẫn từ thiết kế cho đến chất son .</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;Ad&nbsp; ấn tượng ngay từ khi mở bao b&igrave; của thỏi son kem &nbsp;&nbsp;Secret&nbsp;Key&nbsp; Sweet Glam Velvet Tint ch&iacute;nh l&agrave; lớp vỏ ngo&agrave;i được đầu tư kĩ lưỡng. C&oacute; thể thấy sự trau chuốt qua th&acirc;n vu&ocirc;ng vức tr&ocirc;ng rất sang trọng nắp son l&igrave; m&agrave;u hồng phấn rất nữ t&iacute;nh nhưng vẫn đủ sang trọng . Th&acirc;n&nbsp;son&nbsp;cầm rất chắc tay m&agrave;u nh&aacute;m mờ trong suốt gi&uacute;p người d&ugrave;ng c&oacute; thể nh&igrave;n r&otilde; lượng&nbsp;son&nbsp;b&ecirc;n trong. Cọ son thiết kế vạt x&eacute;o &nbsp;gi&uacute;p việc thoa son cực dễ m&agrave; lại tr&aacute;nh lem.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://www.myphamhanquoc.com/upload/images/23795431_303616816709590_6784725046192112999_n.jpg\" /></p>\r\n\r\n<p><br />\r\n<br />\r\n&nbsp;Đ&acirc;y c&oacute; thể gọi l&agrave; sự kết hợp giữa&nbsp;son kem&nbsp;lỳ v&agrave;&nbsp;son&nbsp;tint &nbsp;c&oacute; thể gọi đ&acirc;y l&agrave; d&ograve;ng&nbsp;son&nbsp;velvet tint với chất&nbsp;son&nbsp;mượt m&agrave; c&oacute; khả năng lche đi c&aacute;c khuyết điểm tr&ecirc;n m&ocirc;i một c&aacute;ch dễ d&agrave;ng v&agrave; tự nhi&ecirc;n nhất.</p>\r\n\r\n<p><br />\r\n&nbsp;M&agrave;u sắc tươi tắn với bảng m&agrave;u phong ph&uacute; với chất&nbsp;son&nbsp;l&igrave; l&acirc;u tr&ocirc;i m&agrave; vẫn mềm mượt<br />\r\n&nbsp;</p>\r\n\r\n<p>Sau khi thoa son&nbsp; chất để lại&nbsp;tr&ecirc;n m&ocirc;i bạn lớp&nbsp;son&nbsp;mềm mịn, sờ v&agrave;o như nhung v&agrave; khi kh&ocirc; lại lại cực mịn m&ocirc;i. đ&aacute;nh l&ograve;ng m&ocirc;i thậm ch&iacute; c&ograve;n đẹp hơn nhờ khả năng chuyển đổi độ đậm nhạt rất đều.</p>\r\n\r\n<p><br />\r\nSon &nbsp;Sweet Glam Velvet Tint c&oacute; khả năng giữ m&agrave;u son tốt từ 6-8 tiếng m&agrave; son vẫn b&aacute;m m&ocirc;i m&agrave; kh&ocirc;ng g&acirc;y kh&ocirc; hang loang lổ .&nbsp;Son&nbsp;cứ như 1 lớp whipping cream rất mềm đem thoa l&ecirc;n m&ocirc;i.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://www.myphamhanquoc.com/upload/images/23795140_303616806709591_7849283550602825255_n.jpg\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>C&oacute; thể thấy đ&acirc;y l&agrave; một thỏi son kem đ&uacute;ng chuẩn lại sở hữa nhiều t&ocirc;ng dễ d&ugrave;ng thời thượng c&oacute; thể gi&uacute;p c&aacute;c n&agrave;ng &nbsp;điểm l&agrave;n m&ocirc;i bất cứ đ&acirc;u , rất x&uacute;ng đ&aacute;ng để chung m&igrave;nh mang theo mỗi ng&agrave;y .<br />\r\n&ndash; C&oacute; 5 m&agrave;u xinh xắn cho c&aacute;c n&agrave;ng tha hồ lựa chọn nha:<br />\r\n<a href=\"https://www.facebook.com/hashtag/redmove?source=feed_text\">RedMove</a>: Đỏ Tươi.<br />\r\n<a href=\"https://www.facebook.com/hashtag/orangeberry?source=feed_text\">OrangeBerry</a>: Đỏ Cam.<br />\r\n<a href=\"https://www.facebook.com/hashtag/myrose?source=feed_text\">MyRose</a>: Hồng Baby.<br />\r\n<a href=\"https://www.facebook.com/hashtag/burningrose?source=feed_text\">BurningRose</a>: Hồng Đất.<br />\r\n<a href=\"https://www.facebook.com/hashtag/deepcherry?source=feed_text\">DeepCherry</a>: Đỏ Cherry Đậm.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://www.myphamhanquoc.com/upload/images/23795800_303616846709587_7640413569892022142_n.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"http://www.myphamhanquoc.com/upload/images/24068018_303616813376257_862745315662176651_n.jpg\" /></p>\r\n', '154376336128_10.jpg', 1, 6000000),
 (17, 2, 'KEM NỀN CATRICE HD', '<h1><strong>KEM N&Ecirc;̀N CATRICE HD LIQUID COVERAGE FOUNDATION 24H</strong></h1>\r\n', '<p><em>Xuất xứ: Italy</em></p>\r\n\r\n<p><em>H&atilde;ng: Catrice</em></p>\r\n\r\n<p><em>Dung lượng: 30ml</em></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/24067779_1952330381673314_598695944029987450_n.jpg\" /></p>\r\n\r\n<p><em>Kem nền HD,&nbsp;</em>si&ecirc;u phẩm mới tr&igrave;nh l&agrave;ng 2016 của&nbsp;<strong>Catrice</strong>&nbsp;tuy là dòng drugstore nhưng ch&acirc;́t lượng kh&ocirc;ng h&ecirc;̀ thua kém các dòng sản ph&acirc;̉m highend th&acirc;̣m chí còn tuy&ecirc;̣t vời hơn nữa khi&ecirc;́n nhi&ecirc;̀u blogger khen ngợi h&ecirc;́t lời (y)</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_01.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_02.jpg\" /></p>\r\n\r\n<p>Với các nàng y&ecirc;u th&iacute;ch makeup tự nhi&ecirc;n lại kh&ocirc;ng sợ bị tr&ocirc;i ph&acirc;́n trong thời gian dài th&igrave;&nbsp;<em>Kem n&ecirc;̀n&nbsp;CATRICE Foundation</em>&nbsp;r&acirc;́t đáng đ&ecirc;̉ thử. Tạo một lớp nền mỏng, đều m&agrave;u, trong suốt. Th&iacute;ch hợp với da dầu v&agrave; da hỗn hợp</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4349.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4369.jpg\" /></p>\r\n\r\n<p><em>Kem Nền CATRICE HD Liquid Coverage Foundation</em>&nbsp;được thiết kế với 1 ống ampoule nhỏ giọt gi&uacute;p việc lấy v&agrave; điều tiết kem dễ d&agrave;ng. Đ&acirc;y cũng là đi&ecirc;̉m nh&acirc;́n đặc bi&ecirc;̣t của sản ph&acirc;̉m và nhờ v&acirc;̣y mà kem n&ecirc;̀n được bảo quản t&ocirc;́t hơn.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_03.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-4.jpg\" /></p>\r\n\r\n<p><u><em>G&ocirc;̀m 4 t&ocirc;ng:</em></u></p>\r\n\r\n<p><em>#010 - da trắng</em></p>\r\n\r\n<p><em>#020 - trắng hồng</em></p>\r\n\r\n<p><em>#030 - da tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>#040 - da ngăm</em></p>\r\n\r\n<p>Lớp&nbsp;<em>Kem Nền CATRICE HD Liquid Coverage</em>&nbsp;v&ocirc; c&ugrave;ng&nbsp;mỏng mịn,&nbsp;hiệu quả&nbsp;che phủ cao giữ l&acirc;u đến hơn 12h, chỉ c&acirc;̀n 1 lớp phủ mỏng nhẹ cũng đủ che phủ cho da đẹp tự nhi&ecirc;n căng tràn, kh&ocirc;ng dính, kh&ocirc;ng g&acirc;y bí bách l&ocirc;̃ ch&acirc;n l&ocirc;ng.</p>\r\n\r\n<p>Có lẽ vì v&acirc;̣y mà&nbsp;<strong>CATRICE Foundation</strong>&nbsp;còn được m&ecirc;̣nh danh là &ldquo;Second skin&rdquo; nhờ đ&ocirc;̣ cover HD tạo n&ecirc;n 1 lớp da thứ 2 tuy&ecirc;̣t vời kh&ocirc;ng góc ch&ecirc;́t cho phái đẹp.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-3.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/catrice-hd-liquid-coverage-foundation-3.jpg\" /></p>\r\n\r\n<p>Thời gian che phủ&nbsp;l&ecirc;n đến hơn 12h&nbsp;n&ecirc;n bạn c&oacute; thể thoải m&aacute;i&nbsp;hoạt động cả ng&agrave;y d&agrave;i&nbsp;m&agrave; kh&ocirc;ng cần dặm lại kem hay lo kem tr&ocirc;i do mồ h&ocirc;i hay gặp mưa&hellip;</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-kiem-dau-catrice-hd-liquid-coverage-foundation%20(12).jpg\" /></p>\r\n\r\n<p><strong><u><em>HDSD:&nbsp;</em></u></strong></p>\r\n\r\n<p><em>- T&aacute;n kem bằng tay hoặc dùng mút/cọ tán n&ecirc;̀n để c&oacute; lớp n&ecirc;̀n tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>- Th&iacute;ch hợp cho make up c&aacute; nh&acirc;n hoặc make up chuy&ecirc;n nghiệp</em></p>\r\n', '1543762165IMG_1149-fix2.jpg', 1, 6000000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product_hot`
+-- Table structure for table `tbl_sanpham_hot`
 --
 
-CREATE TABLE `tbl_product_hot` (
-  `pk_product_id` int(11) NOT NULL,
+CREATE TABLE `tbl_sanpham_hot` (
+  `id_sp` int(11) NOT NULL,
   `fk_category_product_id` int(11) NOT NULL DEFAULT '0',
   `c_name` varchar(500) NOT NULL,
   `c_description` varchar(20000) NOT NULL,
@@ -289,10 +289,10 @@ CREATE TABLE `tbl_product_hot` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_product_hot`
+-- Dumping data for table `tbl_sanpham_hot`
 --
 
-INSERT INTO `tbl_product_hot` (`pk_product_id`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
+INSERT INTO `tbl_sanpham_hot` (`id_sp`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
 (2, 2, 'KEM NỀN CATRICE HD LIQUID', '<h1><strong>KEM N&Ecirc;̀N CATRICE HD LIQUID COVERAGE FOUNDATION 24H</strong></h1>\r\n', '<p><em>Xuất xứ: Italy</em></p>\r\n\r\n<p><em>H&atilde;ng: Catrice</em></p>\r\n\r\n<p><em>Dung lượng: 30ml</em></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/24067779_1952330381673314_598695944029987450_n.jpg\" /></p>\r\n\r\n<p><em>Kem nền HD,&nbsp;</em>si&ecirc;u phẩm mới tr&igrave;nh l&agrave;ng 2016 của&nbsp;<strong>Catrice</strong>&nbsp;tuy là dòng drugstore nhưng ch&acirc;́t lượng kh&ocirc;ng h&ecirc;̀ thua kém các dòng sản ph&acirc;̉m highend th&acirc;̣m chí còn tuy&ecirc;̣t vời hơn nữa khi&ecirc;́n nhi&ecirc;̀u blogger khen ngợi h&ecirc;́t lời (y)</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_01.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_02.jpg\" /></p>\r\n\r\n<p>Với các nàng y&ecirc;u th&iacute;ch makeup tự nhi&ecirc;n lại kh&ocirc;ng sợ bị tr&ocirc;i ph&acirc;́n trong thời gian dài th&igrave;&nbsp;<em>Kem n&ecirc;̀n&nbsp;CATRICE Foundation</em>&nbsp;r&acirc;́t đáng đ&ecirc;̉ thử. Tạo một lớp nền mỏng, đều m&agrave;u, trong suốt. Th&iacute;ch hợp với da dầu v&agrave; da hỗn hợp</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4349.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4369.jpg\" /></p>\r\n\r\n<p><em>Kem Nền CATRICE HD Liquid Coverage Foundation</em>&nbsp;được thiết kế với 1 ống ampoule nhỏ giọt gi&uacute;p việc lấy v&agrave; điều tiết kem dễ d&agrave;ng. Đ&acirc;y cũng là đi&ecirc;̉m nh&acirc;́n đặc bi&ecirc;̣t của sản ph&acirc;̉m và nhờ v&acirc;̣y mà kem n&ecirc;̀n được bảo quản t&ocirc;́t hơn.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_03.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-4.jpg\" /></p>\r\n\r\n<p><u><em>G&ocirc;̀m 4 t&ocirc;ng:</em></u></p>\r\n\r\n<p><em>#010 - da trắng</em></p>\r\n\r\n<p><em>#020 - trắng hồng</em></p>\r\n\r\n<p><em>#030 - da tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>#040 - da ngăm</em></p>\r\n\r\n<p>Lớp&nbsp;<em>Kem Nền CATRICE HD Liquid Coverage</em>&nbsp;v&ocirc; c&ugrave;ng&nbsp;mỏng mịn,&nbsp;hiệu quả&nbsp;che phủ cao giữ l&acirc;u đến hơn 12h, chỉ c&acirc;̀n 1 lớp phủ mỏng nhẹ cũng đủ che phủ cho da đẹp tự nhi&ecirc;n căng tràn, kh&ocirc;ng dính, kh&ocirc;ng g&acirc;y bí bách l&ocirc;̃ ch&acirc;n l&ocirc;ng.</p>\r\n\r\n<p>Có lẽ vì v&acirc;̣y mà&nbsp;<strong>CATRICE Foundation</strong>&nbsp;còn được m&ecirc;̣nh danh là &ldquo;Second skin&rdquo; nhờ đ&ocirc;̣ cover HD tạo n&ecirc;n 1 lớp da thứ 2 tuy&ecirc;̣t vời kh&ocirc;ng góc ch&ecirc;́t cho phái đẹp.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-3.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/catrice-hd-liquid-coverage-foundation-3.jpg\" /></p>\r\n\r\n<p>Thời gian che phủ&nbsp;l&ecirc;n đến hơn 12h&nbsp;n&ecirc;n bạn c&oacute; thể thoải m&aacute;i&nbsp;hoạt động cả ng&agrave;y d&agrave;i&nbsp;m&agrave; kh&ocirc;ng cần dặm lại kem hay lo kem tr&ocirc;i do mồ h&ocirc;i hay gặp mưa&hellip;</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-kiem-dau-catrice-hd-liquid-coverage-foundation%20(12).jpg\" /></p>\r\n\r\n<p><strong><u><em>HDSD:&nbsp;</em></u></strong></p>\r\n\r\n<p><em>- T&aacute;n kem bằng tay hoặc dùng mút/cọ tán n&ecirc;̀n để c&oacute; lớp n&ecirc;̀n tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>- Th&iacute;ch hợp cho make up c&aacute; nh&acirc;n hoặc make up chuy&ecirc;n nghiệp</em></p>\r\n', '154376015924067779_1952330381673314_598695944029987450_n.jpg', 1, 6000000),
 (3, 3, 'Sản phẩm 2', 'Thân là con gái, ai cũng muốn mình thật xinh đẹp.', '<p>Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.</p>\r\n', '1528372256sp2.jpg', 1, 6000000),
 (4, 3, 'Sản phẩm 3', '<p>Th&acirc;n l&agrave; con g&aacute;i, ai cũng muốn m&igrave;nh thật xinh đẹp.</p>\r\n', '<p>Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.</p>\r\n', '1539774567anh_5.jpg', 1, 6000000),
@@ -312,11 +312,11 @@ INSERT INTO `tbl_product_hot` (`pk_product_id`, `fk_category_product_id`, `c_nam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product_new`
+-- Table structure for table `tbl_sanpham_moi`
 --
 
-CREATE TABLE `tbl_product_new` (
-  `pk_product_id` int(11) NOT NULL,
+CREATE TABLE `tbl_sanpham_moi` (
+  `id_sp` int(11) NOT NULL,
   `fk_category_product_id` int(11) NOT NULL DEFAULT '0',
   `c_name` varchar(500) NOT NULL,
   `c_description` varchar(20000) NOT NULL,
@@ -327,10 +327,10 @@ CREATE TABLE `tbl_product_new` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_product_new`
+-- Dumping data for table `tbl_sanpham_moi`
 --
 
-INSERT INTO `tbl_product_new` (`pk_product_id`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
+INSERT INTO `tbl_sanpham_moi` (`id_sp`, `fk_category_product_id`, `c_name`, `c_description`, `c_content`, `c_img`, `c_hotproduct`, `c_price`) VALUES
 (2, 2, 'KEM NỀN CATRICE HD LIQUID', '<h1><strong>KEM N&Ecirc;̀N CATRICE HD LIQUID COVERAGE FOUNDATION 24H</strong></h1>\r\n', '<p><em>Xuất xứ: Italy</em></p>\r\n\r\n<p><em>H&atilde;ng: Catrice</em></p>\r\n\r\n<p><em>Dung lượng: 30ml</em></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/24067779_1952330381673314_598695944029987450_n.jpg\" /></p>\r\n\r\n<p><em>Kem nền HD,&nbsp;</em>si&ecirc;u phẩm mới tr&igrave;nh l&agrave;ng 2016 của&nbsp;<strong>Catrice</strong>&nbsp;tuy là dòng drugstore nhưng ch&acirc;́t lượng kh&ocirc;ng h&ecirc;̀ thua kém các dòng sản ph&acirc;̉m highend th&acirc;̣m chí còn tuy&ecirc;̣t vời hơn nữa khi&ecirc;́n nhi&ecirc;̀u blogger khen ngợi h&ecirc;́t lời (y)</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_01.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_02.jpg\" /></p>\r\n\r\n<p>Với các nàng y&ecirc;u th&iacute;ch makeup tự nhi&ecirc;n lại kh&ocirc;ng sợ bị tr&ocirc;i ph&acirc;́n trong thời gian dài th&igrave;&nbsp;<em>Kem n&ecirc;̀n&nbsp;CATRICE Foundation</em>&nbsp;r&acirc;́t đáng đ&ecirc;̉ thử. Tạo một lớp nền mỏng, đều m&agrave;u, trong suốt. Th&iacute;ch hợp với da dầu v&agrave; da hỗn hợp</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4349.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/whatdoyoufancy-catrice-hd-liquid-coverage-foundation-240ppi-1024x960px-4369.jpg\" /></p>\r\n\r\n<p><em>Kem Nền CATRICE HD Liquid Coverage Foundation</em>&nbsp;được thiết kế với 1 ống ampoule nhỏ giọt gi&uacute;p việc lấy v&agrave; điều tiết kem dễ d&agrave;ng. Đ&acirc;y cũng là đi&ecirc;̉m nh&acirc;́n đặc bi&ecirc;̣t của sản ph&acirc;̉m và nhờ v&acirc;̣y mà kem n&ecirc;̀n được bảo quản t&ocirc;́t hơn.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/Catrice_-_HD_Liquid_Coverage_Foundation_03.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-4.jpg\" /></p>\r\n\r\n<p><u><em>G&ocirc;̀m 4 t&ocirc;ng:</em></u></p>\r\n\r\n<p><em>#010 - da trắng</em></p>\r\n\r\n<p><em>#020 - trắng hồng</em></p>\r\n\r\n<p><em>#030 - da tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>#040 - da ngăm</em></p>\r\n\r\n<p>Lớp&nbsp;<em>Kem Nền CATRICE HD Liquid Coverage</em>&nbsp;v&ocirc; c&ugrave;ng&nbsp;mỏng mịn,&nbsp;hiệu quả&nbsp;che phủ cao giữ l&acirc;u đến hơn 12h, chỉ c&acirc;̀n 1 lớp phủ mỏng nhẹ cũng đủ che phủ cho da đẹp tự nhi&ecirc;n căng tràn, kh&ocirc;ng dính, kh&ocirc;ng g&acirc;y bí bách l&ocirc;̃ ch&acirc;n l&ocirc;ng.</p>\r\n\r\n<p>Có lẽ vì v&acirc;̣y mà&nbsp;<strong>CATRICE Foundation</strong>&nbsp;còn được m&ecirc;̣nh danh là &ldquo;Second skin&rdquo; nhờ đ&ocirc;̣ cover HD tạo n&ecirc;n 1 lớp da thứ 2 tuy&ecirc;̣t vời kh&ocirc;ng góc ch&ecirc;́t cho phái đẹp.</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-catrice-hd-liquid-coverage-3.jpg\" /></p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/catrice-hd-liquid-coverage-foundation-3.jpg\" /></p>\r\n\r\n<p>Thời gian che phủ&nbsp;l&ecirc;n đến hơn 12h&nbsp;n&ecirc;n bạn c&oacute; thể thoải m&aacute;i&nbsp;hoạt động cả ng&agrave;y d&agrave;i&nbsp;m&agrave; kh&ocirc;ng cần dặm lại kem hay lo kem tr&ocirc;i do mồ h&ocirc;i hay gặp mưa&hellip;</p>\r\n\r\n<p><img alt=\"\" src=\"https://myphamhanquochcm.com/upload/user/images/kem-nen-kiem-dau-catrice-hd-liquid-coverage-foundation%20(12).jpg\" /></p>\r\n\r\n<p><strong><u><em>HDSD:&nbsp;</em></u></strong></p>\r\n\r\n<p><em>- T&aacute;n kem bằng tay hoặc dùng mút/cọ tán n&ecirc;̀n để c&oacute; lớp n&ecirc;̀n tự nhi&ecirc;n</em></p>\r\n\r\n<p><em>- Th&iacute;ch hợp cho make up c&aacute; nh&acirc;n hoặc make up chuy&ecirc;n nghiệp</em></p>\r\n', '154376015924067779_1952330381673314_598695944029987450_n.jpg', 1, 6000000),
 (3, 3, 'Sản phẩm 2', 'Thân là con gái, ai cũng muốn mình thật xinh đẹp.', '<p>Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.</p>\r\n', '1528372256sp2.jpg', 1, 6000000),
 (4, 3, 'Sản phẩm 3', '<p>Th&acirc;n l&agrave; con g&aacute;i, ai cũng muốn m&igrave;nh thật xinh đẹp.</p>\r\n', '<p>Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.&nbsp;Theo c&aacute;c Cty sữa cho biết, gi&aacute; nguy&ecirc;n liệu sữa nhập khẩu trong th&aacute;ng 11 tiếp tục tăng th&ecirc;m 200USD/tấn. Với mức gi&aacute; hiện nay, gi&aacute; sữa b&eacute;o c&oacute; nguồn gốc New Zealand nhập về VN hiện l&agrave; 5.700USD/tấn, tăng gấp 2 lần so với thời điểm n&agrave;y năm ngo&aacute;i.</p>\r\n', '1539774567anh_5.jpg', 1, 6000000),
@@ -446,15 +446,15 @@ ALTER TABLE `tbl_category_news`
   ADD PRIMARY KEY (`pk_category_news_id`);
 
 --
--- Indexes for table `tbl_category_product`
+-- Indexes for table `tbl_loaisp`
 --
-ALTER TABLE `tbl_category_product`
-  ADD PRIMARY KEY (`pk_category_product_id`);
+ALTER TABLE `tbl_loaisp`
+  ADD PRIMARY KEY (`id_loaisp`);
 
 --
--- Indexes for table `tbl_customer`
+-- Indexes for table `tbl_taikhoan`
 --
-ALTER TABLE `tbl_customer`
+ALTER TABLE `tbl_taikhoan`
   ADD PRIMARY KEY (`customer_id`);
 
 --
@@ -464,34 +464,34 @@ ALTER TABLE `tbl_news`
   ADD PRIMARY KEY (`pk_news_id`);
 
 --
--- Indexes for table `tbl_order`
+-- Indexes for table `tbl_muahang`
 --
-ALTER TABLE `tbl_order`
+ALTER TABLE `tbl_muahang`
   ADD PRIMARY KEY (`order_id`);
 
 --
--- Indexes for table `tbl_order_detail`
+-- Indexes for table `tbl_giaohang`
 --
-ALTER TABLE `tbl_order_detail`
-  ADD PRIMARY KEY (`order_detail_id`);
+ALTER TABLE `tbl_giaohang`
+  ADD PRIMARY KEY (`giaohang_id`);
 
 --
--- Indexes for table `tbl_product`
+-- Indexes for table `tbl_sanpham`
 --
-ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`pk_product_id`);
+ALTER TABLE `tbl_sanpham`
+  ADD PRIMARY KEY (`id_sp`);
 
 --
--- Indexes for table `tbl_product_hot`
+-- Indexes for table `tbl_sanpham_hot`
 --
-ALTER TABLE `tbl_product_hot`
-  ADD PRIMARY KEY (`pk_product_id`);
+ALTER TABLE `tbl_sanpham_hot`
+  ADD PRIMARY KEY (`id_sp`);
 
 --
--- Indexes for table `tbl_product_new`
+-- Indexes for table `tbl_sanpham_moi`
 --
-ALTER TABLE `tbl_product_new`
-  ADD PRIMARY KEY (`pk_product_id`);
+ALTER TABLE `tbl_sanpham_moi`
+  ADD PRIMARY KEY (`id_sp`);
 
 --
 -- Indexes for table `tbl_slide`
@@ -534,15 +534,15 @@ ALTER TABLE `tbl_category_news`
   MODIFY `pk_category_news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tbl_category_product`
+-- AUTO_INCREMENT for table `tbl_loaisp`
 --
-ALTER TABLE `tbl_category_product`
-  MODIFY `pk_category_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `tbl_loaisp`
+  MODIFY `id_loaisp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tbl_customer`
+-- AUTO_INCREMENT for table `tbl_taikhoan`
 --
-ALTER TABLE `tbl_customer`
+ALTER TABLE `tbl_taikhoan`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
@@ -552,34 +552,34 @@ ALTER TABLE `tbl_news`
   MODIFY `pk_news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tbl_order`
+-- AUTO_INCREMENT for table `tbl_muahang`
 --
-ALTER TABLE `tbl_order`
+ALTER TABLE `tbl_muahang`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT for table `tbl_order_detail`
+-- AUTO_INCREMENT for table `tbl_giaohang`
 --
-ALTER TABLE `tbl_order_detail`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+ALTER TABLE `tbl_giaohang`
+  MODIFY `giaohang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
--- AUTO_INCREMENT for table `tbl_product`
+-- AUTO_INCREMENT for table `tbl_sanpham`
 --
-ALTER TABLE `tbl_product`
-  MODIFY `pk_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `tbl_sanpham`
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tbl_product_hot`
+-- AUTO_INCREMENT for table `tbl_sanpham_hot`
 --
-ALTER TABLE `tbl_product_hot`
-  MODIFY `pk_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `tbl_sanpham_hot`
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tbl_product_new`
+-- AUTO_INCREMENT for table `tbl_sanpham_moi`
 --
-ALTER TABLE `tbl_product_new`
-  MODIFY `pk_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `tbl_sanpham_moi`
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_slide`

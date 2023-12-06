@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<!-- card -->
 		<div style="margin:15px 0px">
-			<a href="admin.php?controller=add_edit_slide&act=add" class="btn btn-primary">Add</a>
+			<a href="admin.php?controller=them_sua_slide&act=add" class="btn btn-primary">Add</a>
 		</div>
 		<div class="card border-primary">
 			<div class="card card-header bg-primary text-white" style="padding:7px !important;">Login</div>
@@ -23,8 +23,8 @@
 						</td>
 						<td><?php echo $rows->c_name; ?></td>
 						<td style="text-align: center;">
-							<a href="admin.php?controller=add_edit_slide&act=edit&id=<?php echo $rows->pk_slide_id; ?>">Edit</a>&nbsp;&nbsp;
-							<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=add_edit_slide&act=delete&id=<?php echo $rows->pk_slide_id; ?>">Delete</a>
+							<a href="admin.php?controller=them_sua_slide&act=edit&id=<?php echo $rows->pk_slide_id; ?>">Edit</a>&nbsp;&nbsp;
+							<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=them_sua_slide&act=delete&id=<?php echo $rows->pk_slide_id; ?>">Delete</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

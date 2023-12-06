@@ -31,10 +31,10 @@
 					//caajjp nhật số lượng sản phẩm trong giỏ hàng
 				//duyệt từng phần tử trong giỏ hàng, thực hiên  updat lại số lượng
 				foreach ($_SESSION["cart"] as $product) {
-					$pk_product_id = $product["pk_product_id"];
-					$soluong = $_POST["$pk_product_id"];
+					$id_sp = $product["id_sp"];
+					$soluong = $_POST["$id_sp"];
 					//gọi hàm cập nhật số lượng
-					$this->cart_update($pk_product_id, $soluong);
+					$this->cart_update($id_sp, $soluong);
 				}
 				echo "<script>location.href='index.php?controller=cart'; </script>";
 					break;
@@ -48,16 +48,16 @@
 			//=================
 		}
 
-		public function cart_add($pk_product_id){
-		    if(isset($_SESSION['cart'][$pk_product_id])){
+		public function cart_add($id_sp){
+		    if(isset($_SESSION['cart'][$id_sp])){
 		        //nếu đã có sp trong giỏ hàng thì số lượng lên 1
-		        $_SESSION['cart'][$pk_product_id]['number']++;
+		        $_SESSION['cart'][$id_sp]['number']++;
 		    } else {
 		        //lấy thông tin sản phẩm từ CSDL và lưu vào giỏ hàng
-		        $product = $this->model->get_a_record("select * from tbl_product where pk_product_id=$pk_product_id");
+		        $product = $this->model->get_a_record("select * from tbl_sanpham where id_sp=$id_sp");
 		        
-		        $_SESSION['cart'][$pk_product_id] = array(
-		            'pk_product_id' => $pk_product_id,
+		        $_SESSION['cart'][$id_sp] = array(
+		            'id_sp' => $id_sp,
 		            'c_name' => $product->c_name,
 		            'c_img' => $product->c_img,
 		            'number' => 1,
@@ -70,20 +70,20 @@
 		 * @param int
 		 * @param int
 		 */
-		public function cart_update($pk_product_id, $number){
+		public function cart_update($id_sp, $number){
 		    if($number==0){
 		        //xóa sp ra khỏi giỏ hàng
-		        unset($_SESSION['cart'][$pk_product_id]);
+		        unset($_SESSION['cart'][$id_sp]);
 		    } else {
-		        $_SESSION['cart'][$pk_product_id]['number'] = $number;
+		        $_SESSION['cart'][$id_sp]['number'] = $number;
 		    }
 		}
 		/**
 		 * Xóa sản phẩm ra khỏi giỏ hàng
 		 * @param int
 		 */
-		public function cart_delete($pk_product_id){
-		    unset($_SESSION['cart'][$pk_product_id]);
+		public function cart_delete($id_sp){
+		    unset($_SESSION['cart'][$id_sp]);
 		}
 		/**
 		 * Tổng giá trị giỏ hàng

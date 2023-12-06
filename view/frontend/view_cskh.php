@@ -18,12 +18,12 @@ Nếu Quý khách có bất cứ câu hỏi nào liên quan đến vấn đề t
 <h3>3, Liên hệ với chúng tôi về chính sách bán hàng</h3>
 <div class="fb-comments" style="margin-right: 10px;" data-href="https://myphanhank65c.000webhostapp.com" data-width="700" data-numposts="5"></div>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<!-- <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=1386244808136451&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));</script> -->
 </body>
 </html>

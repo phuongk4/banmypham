@@ -4,19 +4,19 @@
         <div class="owl">
             <?php
             //liệt kê sản phẩm nổi bật
-            $product = $this->model->get_all("select * from tbl_product_new order by pk_product_id desc limit 0,8");
+            $product = $this->model->get_all("select * from tbl_sanpham_moi order by id_sp desc limit 0,8");
             foreach ($product as $rows):
             ?>
             <div class='timer-item item'>
                 <div class="item-inner">
                     <div class="images-container">
-                        <a href="index.php?controller=product_detail&id=<?php echo $rows->pk_product_id; ?>" title="" class="product-image"><img style="width: 226px;height: 268px;" src="public/upload/product/<?php echo $rows->c_img; ?>" alt="hotdeal" /></a>
+                        <a href="index.php?controller=sanpham_chitiet&id=<?php echo $rows->id_sp; ?>" title="" class="product-image"><img style="width: 226px;height: 268px;" src="public/upload/product/<?php echo $rows->c_img; ?>" alt="hotdeal" /></a>
                         <div class="box-timer">
                             <div class="countbox_1 timer-grid"></div>
                         </div>
                     </div>
                     <div class="content-box">
-                        <h2 style="text-align: center;" class="product-name"><a href="index.php?controller=product_detail&id=<?php echo $rows->pk_product_id; ?>" title="Fusce aliquam"><?php echo $rows->c_name; ?></a></h2>
+                        <h2 style="text-align: center;" class="product-name"><a href="index.php?controller=sanpham_chitiet&id=<?php echo $rows->id_sp; ?>" title="Fusce aliquam"><?php echo $rows->c_name; ?></a></h2>
                         <div style="text-align: center;" class="price-box">
                             <p class="special-price">
                                 <span class="price-label">Special Price</span>

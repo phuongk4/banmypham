@@ -11,7 +11,7 @@
 				$email = $_POST["email"];
 				$password = $_POST["password"];
 				//kiem tra dang nhap
-				$check = $this->model->get_a_record("select email, password,customer_id from tbl_customer where email='$email'");
+				$check = $this->model->get_a_record("select email, password,customer_id from tbl_taikhoan where email='$email'");
 
 				if(isset($check->email)){
 					//if($check->password == md5($password)){

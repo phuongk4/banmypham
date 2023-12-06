@@ -11,7 +11,7 @@
       type="image/png" 
       href="public/frontend/images/logo-comestic.jpg">
 
-    <title>Web bán mỹ phẩm </title>
+    <title>Web bán mỹ phẩm DPN</title>
 
 
     <link rel="stylesheet" type="text/css" href="public/frontend/css/style-login.css">
@@ -37,7 +37,7 @@
                     <div style="margin-left: -10px;" class="topbar-left">
                         <ul class="topbar-nav clearfix">
                            <li><span class="phone">0(123) 456 789</span></li>
-                            <li><span class="email">myphamhan@.com</span></li>
+                            <li><span class="email">myphamdpn@.com</span></li>
                         </ul>
                     </div>
                     <div class="topbar-right">
@@ -55,8 +55,10 @@
                                 <a href="#" class="account dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION["email"] ?></a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li><a title="My Account" href="account.html">Tài khoản của tôi</a></li>
-                                    <li><a title="My Wishlist" href="index.php?controller=my_order">Đơn hàng của tôi</a></li>
+                                    <li><a title="My Wishlist" href="index.php?controller=donhang_cuatoi">Đơn hàng của tôi</a></li>
                                     <li><a title="My Cart" href="cart.html">Đổi mật khẩu</a></li>
+                                    <li><a href="admin.php" id="loginform">Admin</a>
+                                     </li> 
                                     <li><a href="index.php?controller=logout" id="loginform">Đăng xuất</a></li>
                                 </ul>
                             </li>
@@ -112,10 +114,10 @@
                               <div class="dropdown">
                                     <button type="button" class="btn" data-toggle="dropdown">Tất cả danh mục<span class="fa fa-angle-down"></span></button>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="index.php?controller=product_category&id=2">Trang điểm</a></li>
-                                        <li><a href="index.php?controller=product_category&id=3">Dưỡng da</a></li>
-                                        <li><a href="index.php?controller=product_category&id=4">Nước hoa</a></li>
-                                        <li><a href="index.php?controller=product_category&id=6">Khác</a></li>
+                                        <li><a href="index.php?controller=loai_sp&id=2">Trang điểm</a></li>
+                                        <li><a href="index.php?controller=loai_sp&id=3">Dưỡng da</a></li>
+                                        <li><a href="index.php?controller=loai_sp&id=4">Nước hoa</a></li>
+                                        <li><a href="index.php?controller=loai_sp&id=6">Khác</a></li>
                                     </ul>
                                 </div>
                                 <button type="text" class="btn btn-danger"  onclick="search(); return false;" ><span class="fa fa-search"></span></button>
@@ -135,10 +137,10 @@
                         <div style="text-align: center;" class="col-md-9">
                             <ul class="menu clearfix visible-lg visible-md">
                                  <li style="width: 165px;"><a  href="index.php">Trang chủ</a></li>
-                                <li style="width: 162px;"><a href="index.php?controller=intro">Giới thiệu</a></li>
-                                <li style="width: 164px;"><a href="index.php?controller=policy">Chính sách</a></li>
+                                <li style="width: 162px;"><a href="index.php?controller=gioithieu">Giới thiệu</a></li>
+                                <li style="width: 164px;"><a href="index.php?controller=chinhsach">Chính sách</a></li>
                                 <li style="width: 210px;"><a href="index.php?controller=cskh">Chăm sóc khách hàng</a></li>
-                                <li style="width: 185px;"><a href="index.php?controller=contact">Liên hệ</a></li>
+                                <li style="width: 185px;"><a href="index.php?controller=lienhe">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -210,7 +212,7 @@
                         <?php include "controller/frontend/controller_hotdeal.php" ?>
                         <?php include "controller/frontend/controller_limited.php" ?>
           <div class="block">
-                            <div class="title-group"><h2>Feedback</h2></div>
+                            <div class="title-group"><h2>Phản hồi</h2></div>
                             <div id="clients-say" class="owl-container">
                                 <div class="owl">
                                     <div class='testimonial-list'>
@@ -403,9 +405,7 @@
             </div>
         </div><!-- /.footer -->
           
-  <!-- ibfb -->
-
-  <!-- Load Facebook SDK for JavaScript -->
+ 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -416,13 +416,13 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- Your customer chat code -->
-<div class="fb-customerchat"
+<!-- <div class="fb-customerchat"
   attribution=setup_tool
   page_id="651649335034658"
   theme_color="#ff5ca1"
   logged_in_greeting="Xin chào ! Myphamhank65c có thể giúp gì cho bạn ?"
   logged_out_greeting="Xin chào ! Myphamhank65c có thể giúp gì cho bạn ?">
-</div>
+</div> -->
 
   <!-- end ibfb -->
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

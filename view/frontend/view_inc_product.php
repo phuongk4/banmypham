@@ -5,11 +5,11 @@
             <div class="mega-menu-category">
                 <ul class="nav">
                 <?php 
-                $category = $this->model->get_all("select * from tbl_category_product");
+                $category = $this->model->get_all("select * from tbl_loaisp");
                 foreach ($category as $rows): 
                 ?>
                 <li class="nosub">
-                <a href="index.php?controller=product_category&id=<?php echo $rows->pk_category_product_id; ?>"><?php echo $rows->c_name; ?></a>
+                <a href="index.php?controller=loai_sp&id=<?php echo $rows->id_loaisp; ?>"><?php echo $rows->c_name; ?></a>
                 <div class="wrap-popup">
                             <div class="popup">
                                 <div class="row">

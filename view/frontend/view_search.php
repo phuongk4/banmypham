@@ -12,12 +12,12 @@
                         <div class="product_icon">
                             <div class='new-icon'><span>hot</span></div>
                         </div>
-                        <a href="index.php?controller=product_detail&id=<?php echo $rows->pk_product_id; ?>" class="jt" title="<?php echo $rows->c_name; ?>" >
+                        <a href="index.php?controller=sanpham_chitiet&id=<?php echo $rows->id_sp; ?>" class="jt" title="<?php echo $rows->c_name; ?>" >
                             <img style="width: 195px; height: 231px;" src="public/upload/product/<?php echo $rows->c_img; ?>">
                         </a>
                     </div>
                     <div class="des-container">
-                        <h2 style="text-align: center;" class="product-name"><a href="index.php?controller=product_detail&id=<?php echo $rows->pk_product_id; ?>" title="<a href="index.php?controller=product_detail&id=<?php echo $rows->pk_product_id; ?>" class="jt" ><?php echo $rows->c_name; ?></a></h2>
+                        <h2 style="text-align: center;" class="product-name"><a href="index.php?controller=sanpham_chitiet&id=<?php echo $rows->id_sp; ?>" title="<a href="index.php?controller=sanpham_chitiet&id=<?php echo $rows->id_sp; ?>" class="jt" ><?php echo $rows->c_name; ?></a></h2>
                         <div style="text-align: center;" class="price-box">
                             <p class="special-price">
                                 <span class="price-label">Special Price</span>

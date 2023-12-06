@@ -18,8 +18,10 @@
 					</tr>
 					<?php 
 						//lấy các bản ghi trong tbl_order_detail tương ứng với order_id truyền vào
-					$product = $this->model->get_all("select tbl_order.* from tbl_order_detail 
-					INNER JOIN tbl_order ON tbl_order_detail.customer_id = tbl_order.order_id WHERE tbl_order.customer_id = $customer_id");
+					$product = $this->model->get_all("select tbl_order_detail.* from tbl_order_detail 
+					INNER JOIN tbl_order ON tbl_order_detail.order_id = tbl_order.order_id WHERE tbl_order.customer_id = $customer_id");
+					// var_dump($product);
+					// die;
 					foreach ($product as $rows): 
 						//lấy sản phẩm
 						$get_product = $this->model->get_a_record("select c_name, c_price from tbl_product where pk_product_id=".$rows->fk_product_id);
